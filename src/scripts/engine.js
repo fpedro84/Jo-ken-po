@@ -208,13 +208,15 @@ async function checkDuelResult(playerCardIndex, computerCardIndex) {
 
     if (playerCard.WinOf.includes(Number(computerCardIndex))) {
         state.score.playerScore++;
-        duelResult = 'Ganhou';
+        duelResult = "Win";
+        await playAudio(duelResult);
     } else if (playerCard.LoseOf.includes(Number(computerCardIndex))) {
         state.score.computerScore++;
-        duelResult = 'Perdeu';
+        duelResult = "Lose";
+        await playAudio(duelResult);
     } else {
         state.score.drawScore++;
-        duelResult = 'Empate';
+        duelResult = 'Draw';
     }
 
     await chekEndGame();
